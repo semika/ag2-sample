@@ -4,11 +4,17 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
+// Application components
 import { AppComponent } from './app.component';
 import { HeroDetailComponent} from './hero-detail.component';
 import { HeroesComponent } from './heroes.component';
-import { HeroService} from './hero.service';
 import { DashboardComponent } from './dashboard.component';
+
+//Application services
+import { HeroService} from './hero.service';
+
+//Application modules
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [ // component goes here...
@@ -17,16 +23,11 @@ import { DashboardComponent } from './dashboard.component';
     HeroesComponent,
     DashboardComponent
   ],
-  imports: [ //Angular inbuild modules goes here.. 
+  imports: [ //Angular modules goes here.. 
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot([
-                             {path : 'heroes', component : HeroesComponent }, 
-                             {path : 'dashboard', component : DashboardComponent},
-                             {path : '', redirectTo : '/dashboard', pathMatch : 'full'},
-                             {path : 'detail/:id', component : HeroDetailComponent } 
-                          ]) 
+    AppRoutingModule 
   ],
   providers: [HeroService], ///services goes here.
   bootstrap: [AppComponent]
